@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="CORTE & CAOS">
+  <rect width="512" height="512" fill="#050506" />
+  <rect x="40" y="40" width="432" height="432" fill="none" stroke="#22222a" stroke-width="8" />
+  <path d="M150 150 L362 362 M362 150 L150 362" stroke="#ccff00" stroke-width="26" stroke-linecap="square" />
+  <rect x="236" y="236" width="40" height="40" fill="#050506" />
+  <rect x="236" y="236" width="40" height="40" fill="#ccff00" transform="rotate(45 256 256)" />
+</svg>
