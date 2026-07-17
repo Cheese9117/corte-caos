@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
   readonly items: readonly string[];
-  readonly speed?: "normal" | "slow";
   readonly className?: string;
 }
 
@@ -12,16 +11,10 @@ interface MarqueeProps {
  * -50% keyframe loops seamlessly; the copy is aria-hidden to avoid repeats
  * for assistive tech.
  */
-export function Marquee({ items, speed = "normal", className }: MarqueeProps) {
+export function Marquee({ items, className }: MarqueeProps) {
   return (
     <div className={cn("group relative overflow-hidden", className)}>
-      <div
-        className={cn(
-          "flex w-max flex-nowrap",
-          speed === "slow" ? "animate-marquee-slow" : "animate-marquee",
-          "group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-        )}
-      >
+      <div className="animate-marquee flex w-max flex-nowrap group-hover:[animation-play-state:paused] motion-reduce:animate-none">
         {[0, 1].map((copy) => (
           <ul
             key={copy}

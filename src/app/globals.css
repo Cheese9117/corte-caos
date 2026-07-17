@@ -9,20 +9,15 @@
   --void: #050506;
   --ink: #0a0a0b;
   --carbon: #101013;
-  --graphite: #16161a;
   --smoke: #22222a;
   --ash: #74747f;
   --bone: #ededed;
   --bone-dim: #b6b6bd;
   --acid: #ccff00;
-  --acid-deep: #9cc400;
   --plasma: #ff2e6d;
 
   --edge: color-mix(in srgb, var(--bone) 8%, transparent);
   --edge-strong: color-mix(in srgb, var(--bone) 16%, transparent);
-  --glow-acid:
-    0 0 0 1px color-mix(in srgb, var(--acid) 60%, transparent),
-    0 0 32px -6px color-mix(in srgb, var(--acid) 55%, transparent);
 
   --shell: 1400px;
   --gutter: clamp(1.25rem, 5vw, 4rem);
@@ -33,13 +28,10 @@
   --color-void: var(--void);
   --color-ink: var(--ink);
   --color-carbon: var(--carbon);
-  --color-graphite: var(--graphite);
-  --color-smoke: var(--smoke);
   --color-ash: var(--ash);
   --color-bone: var(--bone);
   --color-bone-dim: var(--bone-dim);
   --color-acid: var(--acid);
-  --color-acid-deep: var(--acid-deep);
   --color-plasma: var(--plasma);
   --color-edge: var(--edge);
   --color-edge-strong: var(--edge-strong);
@@ -49,7 +41,6 @@
   --font-mono: var(--font-jetbrains-mono);
 
   --animate-marquee: marquee 38s linear infinite;
-  --animate-marquee-slow: marquee 64s linear infinite;
   --animate-flicker: flicker 6s steps(1) infinite;
 }
 
@@ -131,11 +122,6 @@
     color: var(--ash);
   }
 
-  /* Fine acid keyline used to tag sections and interactive edges. */
-  .hairline {
-    background: linear-gradient(90deg, transparent, var(--acid), transparent);
-  }
-
   /* Cross-hatch grid backdrop for brutalist panels. */
   .grid-veil {
     background-image:
@@ -174,16 +160,9 @@
   .text-balance {
     text-wrap: balance;
   }
-  .text-stroke {
-    -webkit-text-stroke: 1px var(--edge-strong);
-    color: transparent;
-  }
   .text-stroke-acid {
     -webkit-text-stroke: 1.5px var(--acid);
     color: transparent;
-  }
-  .mask-fade-r {
-    mask-image: linear-gradient(90deg, #000 82%, transparent);
   }
 }
 
