@@ -28,8 +28,21 @@ Antes de abrir un PR, todo esto debe pasar en verde (lo valida también la CI):
 npm run format:check
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
+
+## Tests
+
+La lógica pura (`src/lib/utils.ts`, `src/components/booking/schema.ts`) está cubierta con
+[Vitest](https://vitest.dev). Los tests viven junto al código que prueban, como `*.test.ts`.
+
+```bash
+npm test          # una pasada
+npm run test:watch
+```
+
+Si tocas formato de precios, sanitización o el schema de reserva, añade o actualiza su test.
 
 Para autoformatear y autocorregir:
 

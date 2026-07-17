@@ -96,9 +96,12 @@ export function BookingDrawer() {
   if (isServer) return null;
 
   return createPortal(
+    // AnimatePresence identifies children by key to track presence across
+    // renders; keep it stable so the exit animation resolves to a removal.
     <AnimatePresence>
       {isOpen ? (
         <BookingFlow
+          key="booking-flow"
           preselectedServiceId={preselectedServiceId}
           onClose={close}
         />

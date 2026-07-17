@@ -41,30 +41,31 @@ confirmar, genera un _deep link_ de WhatsApp con el resumen de la cita.
 
 ### Secciones
 
-| # | Sección       | Qué hace                                                           |
-|---|---------------|-------------------------------------------------------------------|
-| 1 | **Hero**      | Imagen full-bleed con parallax, tipografía brutalista, CTA directo |
-| 2 | **Manifiesto**| Marquee infinito + declaración de marca y principios              |
-| 3 | **Servicios** | Lista interactiva que expande imagen y detalle al hover/focus     |
-| 4 | **Equipo**    | Cards de barberos con tratamiento grayscale → color               |
-| 5 | **Galería**   | Masonry responsive (CSS columns) con captions al hover            |
-| 6 | **Reserva**   | Drawer multi-paso con validación type-safe + confirmación         |
+| #   | Sección        | Qué hace                                                           |
+| --- | -------------- | ------------------------------------------------------------------ |
+| 1   | **Hero**       | Imagen full-bleed con parallax, tipografía brutalista, CTA directo |
+| 2   | **Manifiesto** | Marquee infinito + declaración de marca y principios               |
+| 3   | **Servicios**  | Lista interactiva que expande imagen y detalle al hover/focus      |
+| 4   | **Equipo**     | Cards de barberos con tratamiento grayscale → color                |
+| 5   | **Galería**    | Masonry responsive (CSS columns) con captions al hover             |
+| 6   | **Reserva**    | Drawer multi-paso con validación type-safe + confirmación          |
 
 ---
 
 ## ▚ Tech Stack & decisiones de arquitectura
 
-| Tecnología | Por qué |
-|------------|---------|
+| Tecnología                       | Por qué                                                                                                                                                                                                           |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Next.js 16** (App Router, RSC) | FCP casi instantáneo. Las secciones estáticas se renderizan como React Server Components; solo la interactividad (drawer, navbar, animaciones) baja como Client Components. Turbopack por defecto en dev y build. |
-| **React 19.2** | Última generación del runtime que acompaña a Next 16. |
-| **TypeScript (strict)** | Cero `any`. El dominio (servicios, barberos, slots) está tipado en `src/types` y consumido en toda la app. |
-| **Tailwind CSS v4** | Configuración basada en CSS (`@theme` en `globals.css`), sin `tailwind.config.js`. Design tokens como custom properties → un único punto de verdad para color, tipografía y motion. |
-| **Framer Motion** | Micro-interacciones y reveals on-scroll de alto rendimiento (transform/opacity), con respeto a `prefers-reduced-motion`. |
-| **React Hook Form + Zod** | Validación type-safe del formulario de reserva. El schema de Zod es la fuente de verdad y deriva los tipos de TypeScript. |
-| **Lucide React** | Iconos vectoriales limpios, tree-shakeable. |
-| **next/image** | Conversión automática a WebP/AVIF, `srcset` responsive, `priority` en el hero para evitar CLS. |
-| **next/font** | Self-hosting de Anton, Space Grotesk y JetBrains Mono con `display: swap` — cero requests a Google y cero layout shift. |
+| **React 19.2**                   | Última generación del runtime que acompaña a Next 16.                                                                                                                                                             |
+| **TypeScript (strict)**          | Cero `any`. El dominio (servicios, barberos, slots) está tipado en `src/types` y consumido en toda la app.                                                                                                        |
+| **Tailwind CSS v4**              | Configuración basada en CSS (`@theme` en `globals.css`), sin `tailwind.config.js`. Design tokens como custom properties → un único punto de verdad para color, tipografía y motion.                               |
+| **Framer Motion**                | Micro-interacciones y reveals on-scroll de alto rendimiento (transform/opacity), con respeto a `prefers-reduced-motion`.                                                                                          |
+| **React Hook Form + Zod**        | Validación type-safe del formulario de reserva. El schema de Zod es la fuente de verdad y deriva los tipos de TypeScript.                                                                                         |
+| **Lucide React**                 | Iconos vectoriales limpios, tree-shakeable.                                                                                                                                                                       |
+| **next/image**                   | Conversión automática a WebP/AVIF, `srcset` responsive, `priority` en el hero para evitar CLS.                                                                                                                    |
+| **next/font**                    | Self-hosting de Anton, Space Grotesk y JetBrains Mono con `display: swap` — cero requests a Google y cero layout shift.                                                                                           |
+| **Vitest**                       | Tests unitarios de la lógica pura (formato COP, sanitización, schema de reserva) sin arrastrar un runtime de navegador.                                                                                           |
 
 ### Principios de ingeniería aplicados
 
@@ -74,8 +75,10 @@ confirmar, genera un _deep link_ de WhatsApp con el resumen de la cita.
 - **Accesibilidad**: HTML semántico (`main`, `section`, `article`, `figure`), skip-link, foco
   visible, `aria-*` en el drawer (role `dialog`, `aria-modal`), bloqueo de scroll y restauración
   de foco.
-- **Seguridad** (ver abajo): CSP + cabeceras endurecidas, sanitización de inputs, `rel="noopener
-  noreferrer"` en todo enlace externo.
+- **Seguridad** (ver abajo): CSP + cabeceras endurecidas, sanitización de inputs y
+  `rel="noopener noreferrer"` en todo enlace externo.
+- **Testing**: la lógica pura (formato de precios, sanitización, schema de reserva) está cubierta
+  con Vitest y se ejecuta en cada push.
 - **SEO**: Metadata API completa, OpenGraph + Twitter cards, imagen OG dinámica, JSON-LD
   (`HairSalon`), `sitemap.xml` y `robots.txt` generados.
 
@@ -115,16 +118,18 @@ npm run start
 
 ### Scripts disponibles
 
-| Script | Acción |
-|--------|--------|
-| `npm run dev` | Servidor de desarrollo con HMR |
-| `npm run build` | Build de producción optimizado |
-| `npm run start` | Sirve el build de producción |
-| `npm run lint` | ESLint (flat config) |
-| `npm run lint:fix` | ESLint con autofix |
-| `npm run typecheck` | Chequeo de tipos sin emitir |
-| `npm run format` | Formatea con Prettier |
-| `npm run format:check` | Verifica formato sin escribir |
+| Script                 | Acción                         |
+| ---------------------- | ------------------------------ |
+| `npm run dev`          | Servidor de desarrollo con HMR |
+| `npm run build`        | Build de producción optimizado |
+| `npm run start`        | Sirve el build de producción   |
+| `npm run lint`         | ESLint (flat config)           |
+| `npm run lint:fix`     | ESLint con autofix             |
+| `npm run typecheck`    | Chequeo de tipos sin emitir    |
+| `npm test`             | Tests unitarios (Vitest)       |
+| `npm run test:watch`   | Tests en modo watch            |
+| `npm run format`       | Formatea con Prettier          |
+| `npm run format:check` | Verifica formato sin escribir  |
 
 ---
 
@@ -148,7 +153,8 @@ corte-caos/
 │   │   │   ├── BookingProvider.tsx   # Contexto (open/close, preselección)
 │   │   │   ├── BookingDrawer.tsx      # Drawer multi-paso + confirmación
 │   │   │   ├── BookingTrigger.tsx     # CTA que abre el drawer
-│   │   │   └── schema.ts              # Schema Zod + tipos + pasos
+│   │   │   ├── schema.ts              # Schema Zod + tipos + pasos
+│   │   │   └── schema.test.ts         # Tests del schema y los pasos
 │   │   ├── layout/
 │   │   │   ├── Navbar.tsx             # Nav fija + menú móvil
 │   │   │   └── Footer.tsx             # Footer con horarios y contacto
@@ -163,10 +169,12 @@ corte-caos/
 │   │       └── button-styles.ts       # Variantes de botón compartidas
 │   ├── lib/
 │   │   ├── data.ts             # Contenido tipado (servicios, barberos, galería…)
-│   │   └── utils.ts            # cn(), formatCop(), formatDuration(), sanitizeText()
+│   │   ├── utils.ts            # cn(), formatCop(), formatDuration(), sanitizeText()
+│   │   └── utils.test.ts       # Tests de los helpers
 │   └── types/
 │       └── index.ts            # Interfaces del dominio
 ├── next.config.ts             # Imágenes remotas + CSP y cabeceras de seguridad
+├── vitest.config.ts           # Runner de tests
 ├── tsconfig.json              # TS strict + alias @/*
 ├── .editorconfig              # Estilo de editor consistente
 ├── .nvmrc                     # Versión de Node fijada
