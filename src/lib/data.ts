@@ -12,10 +12,18 @@ const UNSPLASH = "https://images.unsplash.com";
 const shot = (id: string, width = 1400): string =>
   `${UNSPLASH}/${id}?auto=format&fit=crop&w=${width}&q=80`;
 
+/**
+ * Canonical origin. Overridable per environment (preview/staging) via
+ * NEXT_PUBLIC_SITE_URL; falls back to the production domain.
+ */
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://corteycaos.co"
+).replace(/\/$/, "");
+
 export const SITE = {
   name: "CORTE & CAOS",
   shortName: "C&C",
-  domain: "https://corteycaos.co",
+  domain: SITE_URL,
   tagline: "Barbería de autor — El Poblado, Medellín",
   description:
     "Barbería de autor en El Poblado, Medellín. Cortes de precisión, rituales de barba y un lenguaje visual que no se parece a nada. Agenda tu cita.",
