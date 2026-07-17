@@ -1,0 +1,10 @@
+# Normalise line endings to LF in the repository for cross-platform consistency.
+* text=auto eol=lf
+
+# Treat these as binary — never normalise or diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary
+*.ico binary

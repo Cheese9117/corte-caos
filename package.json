@@ -1,7 +1,31 @@
 {
   "name": "corte-caos",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Landing page bespoke brutalist-cyberpunk para la barbería de autor CORTE & CAOS (El Poblado, Medellín). Next.js 16, Tailwind v4 y Framer Motion.",
+  "author": "Juan Sebastián Henao (https://github.com/Cheese9117)",
+  "license": "MIT",
+  "homepage": "https://github.com/Cheese9117/corte-caos#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cheese9117/corte-caos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cheese9117/corte-caos/issues"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "landing-page",
+    "barbershop",
+    "medellin"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
