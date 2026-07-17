@@ -15,6 +15,15 @@
 
 Landing page de alto nivel: brutalismo-cyberpunk, dark mode, acento verde ácido `#CCFF00`.
 
+<br />
+
+[![CI](https://github.com/Cheese9117/corte-caos/actions/workflows/ci.yml/badge.svg)](https://github.com/Cheese9117/corte-caos/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-CCFF00.svg)](./LICENSE)
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js)
+![React](https://img.shields.io/badge/React-19-087EA4?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss&logoColor=white)
+
 </div>
 
 ---
@@ -123,7 +132,7 @@ npm run start
 
 ```
 corte-caos/
-├── public/                     # Assets estáticos
+├── .github/                    # CI (GitHub Actions) + plantillas de issues/PR
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx          # Root layout: fuentes, metadata, providers
@@ -159,6 +168,8 @@ corte-caos/
 │       └── index.ts            # Interfaces del dominio
 ├── next.config.ts             # Imágenes remotas + CSP y cabeceras de seguridad
 ├── tsconfig.json              # TS strict + alias @/*
+├── .editorconfig              # Estilo de editor consistente
+├── .nvmrc                     # Versión de Node fijada
 └── .prettierrc.json
 ```
 
@@ -180,6 +191,23 @@ Usa el plugin oficial `@netlify/plugin-nextjs`. Build command `npm run build`, p
 > **Nota sobre imágenes:** el hero y la galería usan Unsplash vía `next/image`. Los hosts
 > permitidos están declarados en `images.remotePatterns` (`next.config.ts`). Para producción con
 > alto tráfico, considera migrar los assets a tu propio CDN.
+
+---
+
+## ▚ Contribuir
+
+Los PRs son bienvenidos. Revisa [CONTRIBUTING.md](./CONTRIBUTING.md) para los estándares de código,
+el flujo de commits y el checklist previo. La CI de GitHub Actions valida formato, lint, tipos y
+build en cada push.
+
+## ▚ Seguridad
+
+Consulta [SECURITY.md](./SECURITY.md) para la política de reporte de vulnerabilidades y las medidas
+aplicadas.
+
+## ▚ Licencia
+
+[MIT](./LICENSE) © Juan Sebastián Henao
 
 ---
 
